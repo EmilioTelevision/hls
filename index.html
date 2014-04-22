@@ -1,0 +1,90 @@
+
+
+<!doctype html>
+
+<html>
+
+<head>
+   <meta charset="utf-8">
+
+      <title>HLS support · Live stream</title>
+   
+   <!-- optimize mobile versions -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- The "minimalist" skin - choose from: "minimalist.css", "functional.css", "playful.css" -->
+   <link rel="stylesheet" href="http://releases.flowplayer.org/5.4.6/skin/minimalist.css">
+   
+   <!-- Minimal styling for this standalone page, can be removed -->
+   <link rel="stylesheet" href="http://demos.flowplayer.org/media/css/demo.css">
+   <!-- Syntax highlighting of source code, can be removed -->
+   <link rel="stylesheet" href="http://demos.flowplayer.org/media/css/pygments.css">
+   
+<style>
+#content {
+  max-width: 720px; /* narrower for almost 4/3 aspect ratio */
+}
+.flowplayer {
+  background: #777;
+  margin-bottom: 20px;
+}
+</style>
+
+      <!-- Flowplayer depends on jquery -->
+   <script src="js/jquery-1.11.0.min.js"></script>
+         <!-- Flowplayer library -->
+   <script src="js/flowplayer.min.js"></script>
+   
+   
+<script>
+flowplayer.conf = {
+  live: true, // mandatory with live streams
+  rtmp: "rtmp://itv08.digizuite.dk/tv2b",
+  ratio: 9/16,
+  // work around a bug in the flash engine regarding live streams
+  swf: "http://releases.flowplayer.org/5.4.3/flowplayer.swf"
+};
+
+flowplayer(function (api) {
+  api.bind("load", function (e, api, video) {
+    $("#vtype").text(video.type);
+  });
+});
+</script>
+
+</head>
+
+<body>
+
+   <div id="content">
+
+      <h1>Flowplayer · Live stream</h1>
+
+<div class="flowplayer play-button fixed-controls">
+
+   <video preload="none">
+<source type="application/x-mpegurl" src="http://itv08.digizuite.dk/tv2b/ngrp:ch1_all/playlist.m3u8">
+<source type="video/flash" src="ch1">
+   </video>
+
+</div>
+<h1>Flowplayer · HLS support</h1>
+	<div class="flowplayer"
+     data-rtmp="rtmp://stream.blacktrash.org/cfx/st"
+     data-ratio="0.75">
+ 
+   <video poster="http://www.blacktrash.org/img/stsp.jpg">
+      <source type="application/x-mpegurl" src="http://media.blacktrash.org/stsp.m3u8">
+      <source type="video/webm" src="http://media.blacktrash.org/stsp.webm">
+      <source type="video/mp4" src="http://media.blacktrash.org/stsp.mp4">
+      <source type="video/ogg" src="http://media.blacktrash.org/stsp.ogv">
+      <source type="video/flash" src="mp4:stsp">
+   </video>
+ 
+</div>
+
+	
+   </div> <!-- end content -->
+
+</body>
+</html>

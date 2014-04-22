@@ -1,0 +1,14 @@
+.wrapper-with-intrinsic-ratio {
+  position: relative;
+  padding-bottom: 33.3%;
+  height: 0;
+}
+.responsive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+}
